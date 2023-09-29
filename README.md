@@ -30,6 +30,6 @@ Minishell is brought to you by Oreste & Akram 42 Heilbronn students.
 
 To be added...
 
----
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Note**: This README provides a brief overview of the Minishell project. For more in-depth information, consult the project's documentation and codebase. Happy shell scripting! 🚀
