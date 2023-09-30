@@ -29,5 +29,7 @@ fclean:
 clean:
 	rm -f $(OBJS)
 
+re:fclean all
+
 # Phony targets
 .PHONY: all fclean clean 

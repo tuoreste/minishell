@@ -6,12 +6,12 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/29 18:17:22 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:18:24 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-/*c libraries*/
+/*c standard libraries*/
 #include <readline/readline.h>
 #include <stdio.h>
 #include <stdlib.h>
