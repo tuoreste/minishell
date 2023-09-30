@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:19:09 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:28:15 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include "executer/executer.h"
 # include "parser/parser.h"
 # include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 /*linked list*/
 typedef struct s_env

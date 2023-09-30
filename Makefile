@@ -1,4 +1,5 @@
-# NAMEutable name
+# Main Makefile
+
 NAME = minishell
 
 # Compiler and flags
@@ -29,7 +30,11 @@ fclean:
 clean:
 	rm -f $(OBJS)
 
-re:fclean all
+re: fclean all
 
 # Phony targets
-.PHONY: all fclean clean 
+.PHONY: all fclean clean
+
+# Include sub-Makefiles
+include libft/Makefile
+include ft_printf/Makefile
