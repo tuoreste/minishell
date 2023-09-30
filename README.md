@@ -6,6 +6,69 @@ Minishell is a challenging project undertaken as part of the 42 curriculum. This
 
 Minishell serves as a platform for students to deepen their understanding of shell scripting and system-level programming. By recreating the core functionalities of a Unix-like shell, participants gain valuable insights into process management, parsing, and command execution. This project is an opportunity to explore the inner workings of a fundamental tool used in the Unix ecosystem.
 
+## Walkthrough
+
+|---------------------|---------------------------------------------------|
+| Function            | Description                                       |
+|---------------------|---------------------------------------------------|
+| **main**            | - Initializes program data structure              |
+|                     | - Converts environment variables to a linked list |
+|                     | - Stores the current working directory            |
+|                     | - Initializes termios structures for later use    |
+|---------------------|---------------------------------------------------|
+| **handle_line**     | - Handles user input and history                  |
+|                     | - Handles Ctrl + D                                |
+|---------------------|---------------------------------------------------|
+| **lexer**           | - Checks if a character is part of a token group  |
+|                     | - Handles bunny ears for token creation           |
+|                     | - Finds token start and end positions             |
+|                     | - Separates tokens in a line of code              |
+|---------------------|---------------------------------------------------|
+| **parser**          | - Locates the next command in tokens              |
+|                     | - Removes bunny ears from tokens                  |
+|                     | - Extracts commands based on index pair           |
+|                     | - Separates token list by pipe symbol             |
+|                     | - Removes space tokens                            |
+|---------------------|---------------------------------------------------|
+| **signals**         | - Resets terminal attributes                      |
+|                     | - Handles printing a new line after a signal      |
+|---------------------|---------------------------------------------------|
+| **vars**            | - Handles special index searching for variables   |
+|                     | - Resets temporary storage                        |
+|                     | - Breaks down the line based on indexes           |
+|                     | - Recombines strings found in temp storage        |
+|                     | - Handles variable replacement in commands        |
+|---------------------|---------------------------------------------------|
+| **redirection**     | - Handles input redirection                       |
+|                     | - Handles here document input redirection         |
+|                     | - Handles output redirection                      |
+|                     | - Handles append output redirection               |
+|                     | - Checks if a string is a redirection symbol      |
+|                     | - Checks if a command contains a redirection      |
+|                     | - Gets the type of redirection                    |
+|---------------------|---------------------------------------------------|
+| **cmds**            | - Runs a single command                           |
+|                     | - Gets the number of commands                     |
+|                     | - Gets the exit code of the last command          |
+|                     | - Handles execution of multiple commands          |
+|                     | - Executes commands                               |
+|                     | - Gets possible command paths                     |
+|                     | - Checks if a string is in executable format      |
+|                     | - Gets all possible paths of a command            |
+|                     | - Trims the "PATH=" string from a path            |
+|                     | - Appends the command name to the path            |
+|---------------------|---------------------------------------------------|
+| **builtins**        | - Handles the cd command                          |
+|                     | - Handles the echo command                        |
+|                     | - Handles the exit command                        |
+|                     | - Handles the export command                      |
+|                     | - Handles the pwd command                         |
+|                     | - Handles the env command                         |
+|                     | - Handles the unset command                       |
+|                     | - Handles all builtin commands                    |
+|---------------------|---------------------------------------------------|
+
+
 ## Key Features
 
 - **Bash Replication**: Minishell faithfully emulates the behavior of the bash shell, providing users with a familiar interface and feature set.
