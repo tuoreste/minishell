@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:57:08 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/16 21:31:04 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	size_t	i;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	i = 0;
+	while (i < n && s1[i] != '\0' && s2[i] != '\0')
+	{
+		if ((unsigned char )s1[i] != (unsigned char )s2[i])
+		{
+			return ((unsigned char )s1[i] - (unsigned char )s2[i]);
+		}
+		i++;
+	}
+	if (i == n)
+		return (0);
+	return ((unsigned char )s1[i] - (unsigned char )s2[i]);
 }

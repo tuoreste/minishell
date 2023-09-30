@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/20 16:25:09 by aguediri          #+#    #+#             */
+/*   Updated: 2023/03/25 21:06:05 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdlib.h>
 
-void ft_init(char **env, t_env *envlist)
+static void	*ft_memset(void *str, int c, int n)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
+	int				i;
+	unsigned char	*p;
+	char			v;
+
+	p = str;
+	v = (char)c;
+	i = 0;
+	while (i < n)
+	{
+		*p++ = v;
+		i++;
+	}
+	return (str);
 }
-int main (char **env)
-{
-    t_env *envlist;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+void	*ft_calloc(int count, int size)
+{
+	int		t;
+	void	*ptr;
+
+	t = count * size;
+	ptr = (int *) malloc (t);
+	if (ptr)
+		ft_memset(ptr, 0, t);
+	return (ptr);
 }

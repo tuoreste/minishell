@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/20 22:55:00 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/01 03:47:19 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <unistd.h>
 
-void ft_init(char **env, t_env *envlist)
+void	ft_putendl_fd(char *s, int fd)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	int	i;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
 }

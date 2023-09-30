@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:56:19 by aguediri          #+#    #+#             */
+/*   Updated: 2023/03/23 21:22:36 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void ft_init(char **env, t_env *envlist)
+void	*ft_bzero(void *str, int len)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	int		i;
+	char	*s;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	i = 0;
+	s = (char *)str;
+	while (i < len)
+	{
+		s[i] = 0;
+		i++;
+	}
+	return (s);
 }

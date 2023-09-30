@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:57:14 by aguediri          #+#    #+#             */
+/*   Updated: 2023/03/25 00:57:58 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void ft_init(char **env, t_env *envlist)
+static int	ft_strlen(char *str)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
-int main (char **env)
-{
-    t_env *envlist;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+char	*ft_strrchr(char *s, char n)
+{
+	int		i;
+
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if (s[i] == n)
+			return (&s[i]);
+		i--;
+	}
+	return (0);
 }

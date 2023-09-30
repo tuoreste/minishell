@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:56:37 by aguediri          #+#    #+#             */
+/*   Updated: 2023/03/22 15:46:54 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void ft_init(char **env, t_env *envlist)
+int	ft_memcmp(const void *s1, const void *s2, int n)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	int				i;
+	unsigned char	*char_s1;
+	unsigned char	*char_s2;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	i = 0;
+	char_s1 = (unsigned char *) s1;
+	char_s2 = (unsigned char *) s2;
+	while (i < n)
+	{
+		if (char_s1[i] != char_s2[i])
+		{
+			return (char_s1[i] - char_s2[i]);
+		}
+		i++;
+	}
+	return (0);
 }

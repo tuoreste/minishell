@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:56:46 by aguediri          #+#    #+#             */
+/*   Updated: 2023/03/19 21:27:08 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void ft_init(char **env, t_env *envlist)
+void	*ft_memset(void *str, int c, int n)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	int				i;
+	unsigned char	*p;
+	char			v;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	p = str;
+	v = (char)c;
+	i = 0;
+	while (i < n)
+	{
+		*p++ = v;
+		i++;
+	}
+	return (str);
 }

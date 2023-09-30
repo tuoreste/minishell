@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/20 16:25:15 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/01 03:43:49 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdlib.h>
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+char	*ft_strdup(char *s1)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	int		i;
+	char	*c;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	i = ft_strlen(s1);
+	c = (char *) malloc((i + 1) * sizeof (char));
+	if (c != NULL)
+		ft_memcpy(c, s1, i + 1);
+	return (c);
 }

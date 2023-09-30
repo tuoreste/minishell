@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/20 22:54:58 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/01 03:47:03 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <unistd.h>
 
-void ft_init(char **env, t_env *envlist)
+void	ft_putnbr_fd(int n, int fd)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	char	m;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
+	{
+		write(fd, "-", 1);
+		n *= -1;
+	}
+	if (n < 10 && n >= 0)
+	{
+		m = n + '0';
+		write(fd, &m, 1);
+	}
+	else if (n > 0)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		m = n % 10 + '0';
+		write(fd, &m, 1);
+	}
 }

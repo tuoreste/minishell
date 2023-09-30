@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/04/03 03:23:52 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/08 15:57:29 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <unistd.h>
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
-
-    envlist = NULL;
-    ft_init(env, envlist);
+	if (lst == NULL)
+		return ;
+	else
+	{
+		del(lst -> content);
+		free(lst);
+	}
 }

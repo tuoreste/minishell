@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:56:56 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/16 22:18:14 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+size_t	ft_strlcat(char *dst, const char *src, size_t d)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	size_t	i;
+	size_t	j;
+	size_t	l1;
+	size_t	l2;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	j = 0;
+	i = ft_strlen(dst);
+	l2 = i;
+	l1 = ft_strlen(src);
+	if (d == 0)
+		return (l1);
+	while (src[j] != '\0' && i < d - 1)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	if (i < d)
+		dst[i] = '\0';
+	if (l2 < d)
+		return (l1 + l2);
+	else
+		return (l1 + d);
 }

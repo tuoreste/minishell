@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/04/03 03:23:49 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/08 15:56:55 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include<stdlib.h>
+#include"libft.h"
 
-void ft_init(char **env, t_env *envlist)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	t_list	*tmp;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		del(tmp->content);
+		free(tmp);
+	}
+	*lst = NULL;
 }

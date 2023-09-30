@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/04/03 03:23:55 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/10 19:10:11 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
-
-    envlist = NULL;
-    ft_init(env, envlist);
+	if (lst == NULL)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst -> content);
+		lst = lst -> next;
+	}
 }

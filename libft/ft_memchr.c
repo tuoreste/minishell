@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:56:33 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/16 21:42:02 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	char	*p;
+	char	ch;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	p = (char *) str;
+	ch = (char) c;
+	while (n-- > 0)
+	{
+		if (*p == ch)
+			return (p);
+		p++;
+	}
+	return (0);
 }

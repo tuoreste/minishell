@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:57:11 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/16 21:37:35 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+char	*ft_strnstr(const char *h, const char *n, size_t len)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	size_t	i;
+	size_t	j;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	i = 0;
+	j = 0;
+	while (i <= len && h[i])
+	{
+		j = 0;
+		while (j + i < len && n[j] && h[i + j] == n[j])
+		{
+			if (n[j + 1] == '\0')
+				return ((char *)h + i);
+			j++;
+		}
+		i++;
+	}
+	if (*n == '\0')
+		return ((char *)h);
+	return (NULL);
 }

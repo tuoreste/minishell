@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:59 by aguediri         ###   ########.fr       */
+/*   Created: 2023/03/14 15:56:40 by aguediri          #+#    #+#             */
+/*   Updated: 2023/04/16 21:24:21 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void ft_init(char **env, t_env *envlist)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    int i = 0 ;
-    while (*env[i])
-    {
-        lst_add_back();
-    }
-    
-}
-int main (char **env)
-{
-    t_env *envlist;
+	size_t			i;
+	unsigned char	*char_dst;
+	unsigned char	*char_src;
 
-    envlist = NULL;
-    ft_init(env, envlist);
+	if (!src && !dst)
+		return (0);
+	char_src = (unsigned char *) src;
+	char_dst = (unsigned char *) dst;
+	i = 0;
+	while (i < n)
+	{
+		char_dst[i] = char_src[i];
+		i++;
+	}
+	return (dst);
 }
