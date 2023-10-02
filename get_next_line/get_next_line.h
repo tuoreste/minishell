@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 18:48:16 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/05/27 15:02:17 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:02:55 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ char	*get_next_line(int fd);
 char	*get_rslt(char *line);
 char	*get_updated(char *line);
 char	*get_txt(int fd, char **line);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s1);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(const char *str);
+//char	*ft_substr(char const *s, unsigned int start, size_t len);
+//char	*ft_strdup(const char *s1);
+//void	*ft_memcpy(void *dst, const void *src, size_t n);
+//char	*ft_strchr(const char *str, int c);
+//char	*ft_strjoin(char *s1, char *s2);
+//size_t	ft_strlen(const char *str);
 
 #endif

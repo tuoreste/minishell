@@ -1,13 +1,14 @@
+include libft/Makefile
 # Main Makefile
 
 NAME = minishell
 
 # Compiler and flags
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 # Source files
-SRCS = #main.c shell.c commands.c
+SRCS = minishell.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
@@ -26,7 +27,7 @@ $(NAME): $(OBJS)
 # Clean up object files and the NAMEutable
 fclean:
 	rm -f $(OBJS) $(NAME)
-
+	rm -f libft/*.o libft/libft.a
 clean:
 	rm -f $(OBJS)
 
@@ -36,5 +37,3 @@ re: fclean all
 .PHONY: all fclean clean
 
 # Include sub-Makefiles
-include libft/Makefile
-include ft_printf/Makefile

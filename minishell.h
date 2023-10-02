@@ -6,16 +6,16 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/01 18:12:10 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:04:28 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 /*c standard libraries*/
+# include <stdio.h>
 # include <dirent.h>
 # include <readline/readline.h>
 # include <signal.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/ioctl.h>
@@ -35,5 +35,9 @@ typedef struct s_env
 	char			*l;
 	struct s_env	*next;
 }					t_env;
-
+typedef struct s_data
+{
+	char *path;
+	
+} t_data;
 #endif
