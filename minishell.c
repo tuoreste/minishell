@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/02 14:12:32 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:59:29 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	free_up(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i] != NULL)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+void	printenvList(t_env *envlist)
+{
+	t_env	*current;
+
+	current = envlist;
+	while (current != NULL)
+	{
+		printf("%s\n", current->l);
+		current = current->next;
+	}
+}
 
 void	ft_lstaddback(t_env **lst, t_env *new)
 {
@@ -26,27 +50,22 @@ void	ft_lstaddback(t_env **lst, t_env *new)
 		t = t->next;
 	t->next = new;
 }
-void	ft_init(char *envv, t_env *envlist)
+void	ft_init(char **env, t_env *envlist)
 {
 	t_env	*element;
 	int		i;
-	int		j;
-	char	**env;
 
-	env = NULL;
-	env = ft_split(envv, '\n');
-	j = 0;
-	element = malloc(sizeof(t_env));
 	i = 0;
-	while (*env[i])
+	while (env[i])
 	{
-		j = 0;
-		while (env[i][++j])
-			element->l[j] = env[i][j];
+		element = (t_env *)malloc(ft_strlen(env[i]));
+		element->l = ft_strdup(env[i]);
 		ft_lstaddback(&envlist, element);
 		i++;
 	}
+//	printenvList(envlist);
 }
+
 void	ft_getactivepath(t_data *data)
 {
 	int	i;
@@ -57,18 +76,18 @@ void	ft_getactivepath(t_data *data)
 	getcwd(data->path, i);
 }
 
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {
 	t_env	*envlist;
 	t_data	*data;
-	char	*env;
-	char	*envv;
 
-	env = NULL;
-	envv = NULL;
-	envv = getenv(env);
-	printf("%s", envv);
+	if (argc < 1)
+		printf("fbkk");
+	if (argv[0])
+		printf("useless\n");
 	envlist = NULL;
 	data = NULL;
 	ft_init(env, envlist);
+	ft_getactivepath(data);
+	printf("\n\n%s\n\n", data->path);
 }
