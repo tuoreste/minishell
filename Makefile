@@ -3,8 +3,8 @@
 NAME = minishell
 
 # Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 # Source files
 SRC_DIR = libft
