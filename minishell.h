@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/07 18:11:33 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:17:30 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
+# define MINISHELL_H
 /*c standard libraries*/
 # include <stdio.h>
 # include <dirent.h>
@@ -42,6 +43,17 @@ typedef struct s_data
 	t_env *env;
 	
 } t_data;
+
+// history
+# define MAX_BUFFER_SIZE 1024
+# define MAX_HISTORY_SIZE 100
+
+typedef struct s_cmd_history
+{
+	char			history[MAX_HISTORY_SIZE][MAX_BUFFER_SIZE];
+	int				history_index;
+	int				history_size;
+}					t_cmd_hist;
 void	ft_getactivepath(t_data *data);
 void termios(t_data *data);
 void	execute_command(char *command);
