@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termios.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/06 13:28:24 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:23:47 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	handle_interrupt(int signal)
 {
-	if (signal == SIGINT)
+	if (signal == SIGQUIT)
 	{
-		printf("\nCtrl+C detected. Exiting...\n");
+		printf("\nCtrl+D detected. Exiting...\n");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -50,17 +50,17 @@ void	restore_termios(struct termios *saved_attributes)
 	}
 }
 
-char	*read_command(void)
+char	*read_command(t_data *data)
 {
 	char	*input;
 	size_t	input_size;
-	ssize_t	read_bytes;
+	size_t	read_bytes;
 
 	input = NULL;
 	input_size = 0;
-	printf(">> ");
+	ft_getactivepath(data);
 	read_bytes = getline(&input, &input_size, stdin);
-	if (read_bytes == -1)
+	if (!read_bytes)
 	{
 		perror("getline");
 		exit(EXIT_FAILURE);
@@ -68,13 +68,60 @@ char	*read_command(void)
 	input[strcspn(input, "\n")] = '\0';
 	return (input);
 }
+// char *read_command(t_data *data)
+// {
+//     char *input = NULL;
+//     size_t input_size = 0;
+//     ssize_t read_bytes;
+//     char c;
+
+//     while (1)
+//     {
+//         read_bytes = read(STDIN_FILENO, &c, 1);
+
+//         if (read_bytes == -1)
+//         {
+//             perror("read");
+//             exit(EXIT_FAILURE);
+//         }
+
+//         if (read_bytes == 0 || c == EOF)
+//         {
+//             printf("\nCtrl+D detected. Exiting...\n");
+//             exit(EXIT_SUCCESS);
+//         }
+
+//         if (c == '\n')
+//         {
+//             if (input != NULL)
+//             {
+//                 input[strcspn(input, "\n")] = '\0';
+//             }
+//             break ;
+//         }
+
+//         // Append character to input
+//         input = realloc(input, input_size + 2);
+//         if (input == NULL)
+//         {
+//             perror("realloc");
+//             exit(EXIT_FAILURE);
+//         }
+//         input[input_size++] = c;
+//         input[input_size] = '\0';
+//     }
+
+//     return (input);
+// }
 
 void	custom_clear(void)
 {
+	const char	*clear_sequence;
+
 	if (isatty(STDOUT_FILENO))
 	{
-		const char *clear_sequence = "\x1b[H\x1b[2J";
-		write(STDOUT_FILENO, clear_sequence, strlen(clear_sequence));
+		clear_sequence = "\x1b[H\x1b[2J";
+		write(STDOUT_FILENO, clear_sequence, ft_strlen(clear_sequence));
 	}
 }
 
@@ -84,12 +131,11 @@ char	*find_command_in_path(const char *command_name)
 	char	*path_copy;
 	char	*token;
 	char	*full_path;
+	size_t	full_path_length;
 
 	path = getenv("PATH");
 	if (path == NULL)
-	{
 		return (NULL);
-	}
 	path_copy = strdup(path);
 	if (path_copy == NULL)
 	{
@@ -99,7 +145,9 @@ char	*find_command_in_path(const char *command_name)
 	token = strtok(path_copy, ":");
 	while (token != NULL)
 	{
-		full_path = malloc(strlen(token) + strlen(command_name) + 2);
+		full_path_length = strlen(token) + 1 + strlen(command_name) + 2;
+		full_path = (char *)malloc(full_path_length);
+		// full_path = (char *)malloc(sizeof(char *));
 		if (full_path == NULL)
 		{
 			perror("malloc");
@@ -189,7 +237,7 @@ void	execute_command(char *command)
 	}
 }
 
-int	main(int argc, char **argv, char **env)
+void	termios(t_data *data)
 {
 	struct termios	saved_attributes;
 	char			*command;
@@ -199,7 +247,7 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		// printf("Welcome to my minishell!\n");
-		command = read_command();
+		command = read_command(data);
 		if (ft_memcmp(command, "exit", 4) == 0)
 		{
 			free(command);
@@ -207,9 +255,14 @@ int	main(int argc, char **argv, char **env)
 		}
 		else if (strcmp(command, "clear") == 0)
 			custom_clear();
-		execute_command(command);
-		free(command);
+		else if (ft_strncmp(command, "env", 3) == 0)
+			printenvList(data->env);
+		if (ft_strlen(command) != 0)
+		{
+			execute_command(command);
+			free(command);
+		}
 	}
 	restore_termios(&saved_attributes);
-	return (0);
+	return ;
 }

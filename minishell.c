@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/06 13:35:17 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:13:34 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,29 @@ void	ft_lstaddback(t_env **lst, t_env *new)
 		t = t->next;
 	t->next = new;
 }
-void ft_init(char **env, t_env **envlist)
-{
-    t_env *element;
-    int i;
 
-    i = 0;
-    while (env[i])
-    {
-        element = (t_env *)malloc(sizeof(t_env)); // Allocate memory for the entire t_env structure
-        if (element)
-        {
-            element->l = ft_strdup(env[i]);
-            element->next = NULL; // Initialize the 'next' pointer
-            ft_lstaddback(envlist, element);
-        }
-        i++;
-    }
-     printenvList(*envlist);
+void	ft_init(char **env, t_data **data)
+{
+	t_env	*temp;
+	int i = 0;
+	*data = (t_data *)malloc(sizeof(t_data)); // Allocate memory for t_data
+	(*data)->env = NULL;                      // Initialize the env field
+	while (env[i])
+	{
+		t_env *new_env = (t_env *)malloc(sizeof(t_env));
+		new_env->l = ft_strdup(env[i]);
+		new_env->next = NULL; // Initialize the 'next' pointer
+		if ((*data)->env == NULL)
+			(*data)->env = new_env;
+		else
+		{
+			temp = (*data)->env;
+			while (temp->next != NULL)
+				temp = temp->next;
+			temp->next = new_env;
+		}
+		i++;
+	}
 }
 
 void	ft_getactivepath(t_data *data)
@@ -80,26 +85,24 @@ void	ft_getactivepath(t_data *data)
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!s)
 		return ;
-	printf("%ld\n", i);
 	s = getcwd(s, i);
 	if (s)
 		data->path = ft_strdup(s);
 	else
 		printf("qwwd");
-	printf("%s", s);
+	printf("%s %%", s);
 }
 
 int	main(int argc, char **argv, char **env)
 {
-	t_env	*envlist;
 	t_data	*data;
 
 	if (argc < 1)
 		printf("fbkk");
 	if (argv[0])
-		printf("useless\n");
+		;
 	data = NULL;
-	envlist = NULL;
-	ft_init(env, &envlist);
-	ft_getactivepath(data);
+	ft_init(env, &data);
+	//	ft_getactivepath(data);
+	termios(data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/03 13:59:27 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:56:54 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ typedef struct s_env
 typedef struct s_data
 {
 	char *path;
+	t_env *env;
 	
 } t_data;
+void	ft_getactivepath(t_data *data);
+void termios(t_data *data);
+void	execute_command(char *command);
+char	*find_command_in_path(const char *command_name);
+void	custom_clear(void);
+char *read_command(t_data *data);
+void	restore_termios(struct termios *saved_attributes);
+void	init_termios(struct termios *saved_attributes);
+void	handle_interrupt(int signal);
+void	printenvList(t_env *envlist);
+
 #endif
