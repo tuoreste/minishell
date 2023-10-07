@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/06 13:35:17 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:15:17 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_up(char **arr)
 	}
 	free(arr);
 }
+
 void	printenvList(t_env *envlist)
 {
 	t_env	*current;
@@ -50,24 +51,25 @@ void	ft_lstaddback(t_env **lst, t_env *new)
 		t = t->next;
 	t->next = new;
 }
-void ft_init(char **env, t_env **envlist)
-{
-    t_env *element;
-    int i;
 
-    i = 0;
-    while (env[i])
-    {
-        element = (t_env *)malloc(sizeof(t_env)); // Allocate memory for the entire t_env structure
-        if (element)
-        {
-            element->l = ft_strdup(env[i]);
-            element->next = NULL; // Initialize the 'next' pointer
-            ft_lstaddback(envlist, element);
-        }
-        i++;
-    }
-     printenvList(*envlist);
+void	ft_init(char **env, t_env **envlist)
+{
+	t_env	*element;
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		element = (t_env *)malloc(sizeof(t_env));
+		if (element)
+		{
+			element->l = ft_strdup(env[i]);
+			element->next = NULL;
+			ft_lstaddback(envlist, element);
+		}
+		i++;
+	}
+	printenvList(*envlist);
 }
 
 void	ft_getactivepath(t_data *data)

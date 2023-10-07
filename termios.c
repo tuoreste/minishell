@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/06 13:28:24 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:27:12 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ char	*read_command(void)
 
 void	custom_clear(void)
 {
+	const char	*clear_sequence;
+
 	if (isatty(STDOUT_FILENO))
 	{
-		const char *clear_sequence = "\x1b[H\x1b[2J";
+		clear_sequence = "\x1b[H\x1b[2J";
 		write(STDOUT_FILENO, clear_sequence, strlen(clear_sequence));
 	}
 }
@@ -122,12 +124,12 @@ void	execute_command(char *command)
 {
 	int		fd[2];
 	pid_t	child_pid;
-	char	buffer[4096];
-	ssize_t	read_bytes;
 	char	*token;
+	char	**args;
 	int		arg_count;
 	char	*full_path;
-	char	**args;
+		char buffer[4096];
+		ssize_t read_bytes;
 
 	if (pipe(fd) == -1)
 	{
