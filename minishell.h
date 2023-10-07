@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/07 16:56:54 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:11:33 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	restore_termios(struct termios *saved_attributes);
 void	init_termios(struct termios *saved_attributes);
 void	handle_interrupt(int signal);
 void	printenvList(t_env *envlist);
+
 
 #endif

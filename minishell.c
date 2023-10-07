@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/07 17:13:34 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:11:18 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	ft_init(char **env, t_data **data)
 		{
 			temp = (*data)->env;
 			while (temp->next != NULL)
+			{
 				temp = temp->next;
+			}
 			temp->next = new_env;
 		}
 		i++;

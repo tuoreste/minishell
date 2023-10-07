@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/07 17:23:47 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:12:05 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,10 +258,8 @@ void	termios(t_data *data)
 		else if (ft_strncmp(command, "env", 3) == 0)
 			printenvList(data->env);
 		if (ft_strlen(command) != 0)
-		{
 			execute_command(command);
-			free(command);
-		}
+		 free(command);
 	}
 	restore_termios(&saved_attributes);
 	return ;
