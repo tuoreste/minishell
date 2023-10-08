@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/08 14:42:44 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:45:38 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ typedef struct s_env
 }					t_env;
 typedef struct s_data
 {
-	char			*path;
-	t_env			*env;
-}					t_data;
+	char *path;
+	t_env *env;
+	
+} t_data;
 
 // history
 # define MAX_BUFFER_SIZE 1024

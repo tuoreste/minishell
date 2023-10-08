@@ -1,5 +1,4 @@
 # Main Makefile
-
 NAME = minishell
 
 # Compiler and flags
