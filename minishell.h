@@ -6,16 +6,18 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/07 18:27:15 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:42:44 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef MINISHELL_H
+# define MINISHELL_H
 /*c standard libraries*/
+# include <stdio.h>
 # include <dirent.h>
 # include <readline/readline.h>
 # include <signal.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/ioctl.h>
@@ -39,8 +41,19 @@ typedef struct s_data
 {
 	char			*path;
 	t_env			*env;
-
 }					t_data;
+
+// history
+# define MAX_BUFFER_SIZE 1024
+# define MAX_HISTORY_SIZE 100
+
+typedef struct s_cmd_history
+{
+	char			history[MAX_HISTORY_SIZE][MAX_BUFFER_SIZE];
+	int				history_index;
+	int				history_size;
+}					t_cmd_hist;
+
 void				ft_getactivepath(t_data *data);
 void				termios(t_data *data);
 void				execute_command(char *command);
