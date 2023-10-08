@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:10 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/07 18:17:30 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:42:32 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ typedef struct s_env
 }					t_env;
 typedef struct s_data
 {
-	char *path;
-	t_env *env;
-	
+	char	*path;
+	t_env	*env;
 } t_data;
 
 // history
