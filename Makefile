@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 # Source files
 SRC_DIR = libft
 SRCS = $(wildcard $(SRC_DIR)/*.c)
-SRCS += minishell.c termios.c
+SRCS += minishell.c termios.c history.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)

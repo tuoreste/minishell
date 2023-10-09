@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/07 18:12:05 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:17:48 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,27 +240,41 @@ void	execute_command(char *command)
 void	termios(t_data *data)
 {
 	struct termios	saved_attributes;
-	char			*command;
+	t_cmd_hist		*h;
+	t_cmd_hist		*command;		
 
 	signal(SIGINT, handle_interrupt);
 	init_termios(&saved_attributes);
 	while (1)
 	{
 		// printf("Welcome to my minishell!\n");
-		command = read_command(data);
-		if (ft_memcmp(command, "exit", 4) == 0)
+		h = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
+		command = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
+		if (!h)
+			return ;
+		command->history = read_command(data);
+		
+		if (command)
+		{
+		 	command->history_index++;
+			command->history_size = ft_strlen(command->history);
+		}
+		ft_lstaddh(&h,command);
+		//add_to_history(h, command);
+		if (ft_memcmp(command->history, "exit", 4) == 0)
 		{
 			free(command);
 			break ;
 		}
-		else if (strcmp(command, "clear") == 0)
+		else if (strcmp(command->history, "clear") == 0)
 			custom_clear();
-		else if (ft_strncmp(command, "env", 3) == 0)
+		else if (ft_strncmp(command->history, "env", 3) == 0)
 			printenvList(data->env);
-		if (ft_strlen(command) != 0)
-			execute_command(command);
+		if (ft_strlen(command->history) != 0)
+			execute_command(command->history);
 		 free(command);
 	}
 	restore_termios(&saved_attributes);
+	printhstList(h);
 	return ;
 }
