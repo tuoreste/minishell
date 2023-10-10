@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/10 13:10:55 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:14:15 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ char	*find_command_in_path(const char *command_name)
 	{
 		full_path_length = strlen(token) + 1 + strlen(command_name) + 2;
 		full_path = (char *)malloc(full_path_length);
-		// full_path = (char *)malloc(sizeof(char *));
 		if (full_path == NULL)
 		{
 			perror("malloc");
