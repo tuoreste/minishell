@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/09 14:19:20 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:54:01 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,23 @@ void	printenvList(t_env *envlist)
 		current = current->next;
 	}
 }
+// void	printhstList(t_cmd_hist *envlist)
+// {
+// 	while (envlist != NULL)
+// 	{
+// 		printf("%s\n", envlist->history);
+// 		envlist = envlist->next;
+// 	}
+// }
+
 void	printhstList(t_cmd_hist *envlist)
 {
 	while (envlist != NULL)
 	{
-		printf("%s\n", envlist->history);
+		if (envlist->history != NULL)
+		{
+			printf("%s\n", envlist->history);
+		}
 		envlist = envlist->next;
 	}
 }
@@ -62,12 +74,15 @@ void	ft_lstaddback(t_env **lst, t_env *new)
 void	ft_init(char **env, t_data **data)
 {
 	t_env	*temp;
-	int i = 0;
+	int		i;
+	t_env	*new_env;
+
+	i = 0;
 	*data = (t_data *)malloc(sizeof(t_data)); // Allocate memory for t_data
 	(*data)->env = NULL;                      // Initialize the env field
 	while (env[i])
 	{
-		t_env *new_env = (t_env *)malloc(sizeof(t_env));
+		new_env = (t_env *)malloc(sizeof(t_env));
 		new_env->l = ft_strdup(env[i]);
 		new_env->next = NULL; // Initialize the 'next' pointer
 		if ((*data)->env == NULL)
