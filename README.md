@@ -14,7 +14,7 @@ Minishell serves as a platform for students to deepen their understanding of she
 |                     | X Converts environment variables to a linked list |
 |                     | X Stores the current working directory            |
 |                     | X Initializes termios structures for later use    |
-| **handle_line**     | - Handles user input and history                  |
+| **handle_line**     | X Handles user input and history                  |
 |                     | - Handles Ctrl + D                                |
 | **lexer**           | - Checks if a character is part of a token group  |
 |                     | - Handles bunny ears for token creation           |

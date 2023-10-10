@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termios.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/10 13:14:15 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:01:01 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,7 +312,9 @@ void	termios(t_data *data)
 			custom_clear();
 		else if (ft_strncmp(command->history, "env", 3) == 0)
 			printenvList(data->env);
-		if (ft_strlen(command->history) != 0)
+		else if (ft_strncmp(command->history, "history", 7) == 0)
+			printhstList(h);
+		else if (ft_strlen(command->history) != 0)
 			execute_command(command->history);
 		command = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
 		if (!command)
