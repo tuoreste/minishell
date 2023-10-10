@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 13:18:01 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/08 17:30:50 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:02:28 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 // 	history->history_index = 0;
 // 	history->history_size = 0;
 // }
-void ft_lstaddh(t_cmd_hist **lst, t_cmd_hist *new)
-{
-    if (new == NULL)
-        return;
+//----------------------------------------------
+// void ft_lstaddh(t_cmd_hist **lst, t_cmd_hist *new)
+// {
+//     if (new == NULL)
+//         return;
     
-    new->next = *lst;
-    *lst = new;
-}
+//     new->next = *lst;
+//     *lst = new;
+// }
+
 
 
 // void	add_to_history(t_cmd_hist *history, const char *command)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:52:06 by aguediri          #+#    #+#             */
-/*   Updated: 2023/10/08 17:22:40 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:19:20 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ void	printenvList(t_env *envlist)
 }
 void	printhstList(t_cmd_hist *envlist)
 {
-	t_cmd_hist	*current;
-	current = envlist;
-	while (current != NULL)
+	while (envlist != NULL)
 	{
-		printf("%s\n", current->history);
-		current = current->next;
+		printf("%s\n", envlist->history);
+		envlist = envlist->next;
 	}
 }
 
@@ -100,8 +98,6 @@ void	ft_getactivepath(t_data *data)
 	s = getcwd(s, i);
 	if (s)
 		data->path = ft_strdup(s);
-	else
-		printf("qwwd");
 	printf("%s %%", s);
 }
 
@@ -115,6 +111,5 @@ int	main(int argc, char **argv, char **env)
 		;
 	data = NULL;
 	ft_init(env, &data);
-	//	ft_getactivepath(data);
 	termios(data);
 }

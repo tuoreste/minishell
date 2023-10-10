@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termios.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/09 13:17:48 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:32:20 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,26 +241,26 @@ void	termios(t_data *data)
 {
 	struct termios	saved_attributes;
 	t_cmd_hist		*h;
-	t_cmd_hist		*command;		
-
+	t_cmd_hist		*command = NULL;
+	int i=0;
 	signal(SIGINT, handle_interrupt);
 	init_termios(&saved_attributes);
+	h = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
+	command = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
 	while (1)
 	{
 		// printf("Welcome to my minishell!\n");
-		h = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
-		command = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
-		if (!h)
-			return ;
 		command->history = read_command(data);
-		
 		if (command)
 		{
-		 	command->history_index++;
+			command->history_index = ++i;
 			command->history_size = ft_strlen(command->history);
 		}
-		ft_lstaddh(&h,command);
-		//add_to_history(h, command);
+		printf("%d\n", command->history_size);
+    	command->next = h;
+    	h = command;
+		//ft_lstaddh(&h, command);
+		// add_to_history(h, command);
 		if (ft_memcmp(command->history, "exit", 4) == 0)
 		{
 			free(command);
@@ -272,7 +272,7 @@ void	termios(t_data *data)
 			printenvList(data->env);
 		if (ft_strlen(command->history) != 0)
 			execute_command(command->history);
-		 free(command);
+//		free(command);
 	}
 	restore_termios(&saved_attributes);
 	printhstList(h);
