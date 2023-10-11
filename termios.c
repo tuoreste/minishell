@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/10 19:01:01 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:14:25 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,6 +277,32 @@ void	execute_command(char *command)
 // 	printhstList(h);
 // 	return ;
 // }
+void	exec(char *s, t_data *data, t_cmd_hist *h)
+{
+	char	**t;
+	int	i;
+
+//	if (ft_strnstr(s, "&&", 2) != 0)
+	{
+		t = ft_split(s, '&');
+		i = 0;
+		while (t[i])
+		{
+			if (ft_memcmp(t[i], "exit", 4) == 0)
+				return ;
+			if (strcmp(t[i], "clear") == 0)
+				custom_clear();
+			else if (ft_strncmp(t[i], "env", 3) == 0)
+				printenvList(data->env);
+			else if (ft_strncmp(t[i], "history", 7) == 0)
+				printhstList(h);
+			 else //if (ft_strlen(t[i]) != 0)
+				execute_command(s);
+			printf("%s", t[i]);
+			i++;
+		}
+	}
+}
 
 void	termios(t_data *data)
 {
@@ -303,19 +329,11 @@ void	termios(t_data *data)
 		}
 		command->history_index = ++i;
 		command->history_size = ft_strlen(command->history);
-		//printf("%d\n", command->history_size);
 		command->next = h;
 		h = command;
-		if (ft_memcmp(command->history, "exit", 4) == 0)
+		if (ft_strnstr(command->history, "exit", 4) != 0)
 			break ;
-		else if (strcmp(command->history, "clear") == 0)
-			custom_clear();
-		else if (ft_strncmp(command->history, "env", 3) == 0)
-			printenvList(data->env);
-		else if (ft_strncmp(command->history, "history", 7) == 0)
-			printhstList(h);
-		else if (ft_strlen(command->history) != 0)
-			execute_command(command->history);
+		exec(command->history, data, h);
 		command = (t_cmd_hist *)malloc(sizeof(t_cmd_hist));
 		if (!command)
 			break ;
