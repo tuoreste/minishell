@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/11 20:14:25 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/11 21:22:41 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,28 +277,50 @@ void	execute_command(char *command)
 // 	printhstList(h);
 // 	return ;
 // }
+char	*ft_trim(char *s)
+{
+	int	i;
+	int	j;
+	int	length;
+
+	i = 0;
+	j = strlen(s);
+	while (s[i] == ' ')
+	{
+		i++;
+	}
+	while (j > i && s[j - 1] == ' ')
+	{
+		j--;
+	}
+	length = j - i;
+	char *str = (char *)malloc(length + 1); // +1 for the null terminator
+	if (str)
+	{
+		strncpy(str, s + i, length);
+		str[length] = '\0'; // Null-terminate the new string
+	}
+	return (str);
+}
 void	exec(char *s, t_data *data, t_cmd_hist *h)
 {
 	char	**t;
-	int	i;
+	int		i;
 
-//	if (ft_strnstr(s, "&&", 2) != 0)
 	{
 		t = ft_split(s, '&');
 		i = 0;
 		while (t[i])
 		{
-			if (ft_memcmp(t[i], "exit", 4) == 0)
-				return ;
-			if (strcmp(t[i], "clear") == 0)
+			if (strcmp((ft_trim(t[i])), "clear") == 0)
 				custom_clear();
-			else if (ft_strncmp(t[i], "env", 3) == 0)
+			else if (ft_strncmp(ft_trim(t[i]), "env", 3) == 0)
 				printenvList(data->env);
-			else if (ft_strncmp(t[i], "history", 7) == 0)
+			else if (ft_strncmp(ft_trim(t[i]), "history", 7) == 0)
 				printhstList(h);
-			 else //if (ft_strlen(t[i]) != 0)
-				execute_command(s);
-			printf("%s", t[i]);
+			else
+				execute_command(ft_trim(t[i]));
+			printf("%s", ft_trim(t[i]));
 			i++;
 		}
 	}
