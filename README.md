@@ -42,7 +42,7 @@ Minishell serves as a platform for students to deepen their understanding of she
 | **cmds**            | X Runs a single command                           |
 |                     | - Gets the number of commands                     |
 |                     | - Gets the exit code of the last command          |
-|                     | - Handles execution of multiple commands          |
+|                     | X Handles execution of multiple commands          |
 |                     | X Executes commands                               |
 |                     | - Gets possible command paths                     |
 |                     | - Checks if a string is in executable format      |
@@ -51,10 +51,10 @@ Minishell serves as a platform for students to deepen their understanding of she
 |                     | X Appends the command name to the path            |
 | **builtins**        | - Handles the cd command                          |
 |                     | - Handles the echo command                        |
-|                     | - Handles the exit command                        |
+|                     | X Handles the exit command                        |
 |                     | - Handles the export command                      |
 |                     | - Handles the pwd command                         |
-|                     | - Handles the env command                         |
+|                     | X Handles the env command                         |
 |                     | - Handles the unset command                       |
 |                     | - Handles all builtin commands                    |
 

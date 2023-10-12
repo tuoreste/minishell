@@ -6,7 +6,7 @@
 /*   By: aguediri <aguediri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:47:52 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/10/11 21:22:41 by aguediri         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:08:36 by aguediri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,9 +318,10 @@ void	exec(char *s, t_data *data, t_cmd_hist *h)
 				printenvList(data->env);
 			else if (ft_strncmp(ft_trim(t[i]), "history", 7) == 0)
 				printhstList(h);
+			else if (ft_strncmp(ft_trim(t[i]), "pwd", 3) == 0)
+				ft_getactivepath(data);
 			else
 				execute_command(ft_trim(t[i]));
-			printf("%s", ft_trim(t[i]));
 			i++;
 		}
 	}
