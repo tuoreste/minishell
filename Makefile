@@ -1,12 +1,14 @@
-# NAMEutable name
+# Main Makefile
 NAME = minishell
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 # Source files
-SRCS = #main.c shell.c commands.c
+SRC_DIR = libft
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+SRCS += minishell.c termios.c history.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
@@ -25,11 +27,14 @@ $(NAME): $(OBJS)
 # Clean up object files and the NAMEutable
 fclean:
 	rm -f $(OBJS) $(NAME)
-
+#	rm -f libft/*.o libft/libft.a
 clean:
 	rm -f $(OBJS)
 
-re:fclean all
+re: fclean all
 
 # Phony targets
-.PHONY: all fclean clean 
+.PHONY: all fclean clean
+
+# Include sub-Makefiles
+#include libft/Makefile
