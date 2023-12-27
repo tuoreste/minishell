@@ -10,11 +10,11 @@ Minishell serves as a platform for students to deepen their understanding of she
 
 | Function            | Description                                       |
 |---------------------|---------------------------------------------------|
-| **main**            | X Initializes program data structure              |
-|                     | X Converts environment variables to a linked list |
-|                     | X Stores the current working directory            |
-|                     | X Initializes termios structures for later use    |
-| **handle_line**     | X Handles user input and history                  |
+| **main**            | - Initializes program data structure              |
+|                     | - Converts environment variables to a linked list |
+|                     | - Stores the current working directory            |
+|                     | - Initializes termios structures for later use    |
+| **handle_line**     | - Handles user input and history                  |
 |                     | - Handles Ctrl + D                                |
 | **lexer**           | - Checks if a character is part of a token group  |
 |                     | - Handles bunny ears for token creation           |
@@ -39,22 +39,22 @@ Minishell serves as a platform for students to deepen their understanding of she
 |                     | - Checks if a string is a redirection symbol      |
 |                     | - Checks if a command contains a redirection      |
 |                     | - Gets the type of redirection                    |
-| **cmds**            | X Runs a single command                           |
+| **cmds**            | - Runs a single command                           |
 |                     | - Gets the number of commands                     |
 |                     | - Gets the exit code of the last command          |
-|                     | X Handles execution of multiple commands          |
-|                     | X Executes commands                               |
+|                     | - Handles execution of multiple commands          |
+|                     | - Executes commands                               |
 |                     | - Gets possible command paths                     |
 |                     | - Checks if a string is in executable format      |
-|                     | X Gets all possible paths of a command            |
-|                     | X Trims the "PATH=" string from a path            |
-|                     | X Appends the command name to the path            |
+|                     | - Gets all possible paths of a command            |
+|                     | - Trims the "PATH=" string from a path            |
+|                     | - Appends the command name to the path            |
 | **builtins**        | - Handles the cd command                          |
 |                     | - Handles the echo command                        |
-|                     | X Handles the exit command                        |
+|                     | - Handles the exit command                        |
 |                     | - Handles the export command                      |
 |                     | - Handles the pwd command                         |
-|                     | X Handles the env command                         |
+|                     | - Handles the env command                         |
 |                     | - Handles the unset command                       |
 |                     | - Handles all builtin commands                    |
 
